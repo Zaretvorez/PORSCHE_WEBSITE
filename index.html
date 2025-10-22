@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Porsche Center - Официальный дилер РБ</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #cc0000;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #cc0000;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3")
+            center/cover;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #cc0000;
+      }
+
+      .hero-content p {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: #cc0000;
+        color: #fff;
+        padding: 15px 40px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .cta-button:hover {
+        background: #ff0000;
+      }
+
+      /* Models Section */
+      .models {
+        padding: 100px 0;
+        background: #111;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 60px;
+        color: #cc0000;
+      }
+
+      /* Слайдер */
+      .slider-container {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        background: #222;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .slide-image {
+        height: 300px;
+        background: linear-gradient(135deg, #333 0%, #000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cc0000;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .slide-info {
+        padding: 25px;
+      }
+
+      .slide-info h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #cc0000;
+      }
+
+      .slide-info p {
+        margin-bottom: 20px;
+        color: #ccc;
+        font-size: 16px;
+      }
+
+      .specs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .spec-item {
+        text-align: center;
+        flex: 1;
+      }
+
+      .spec-value {
+        font-size: 22px;
+        font-weight: bold;
+        color: #cc0000;
+      }
+
+      .spec-label {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .slider-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 10px;
+      }
+
+      .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #444;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .slider-dot.active {
+        background: #cc0000;
+      }
+
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(204, 0, 0, 0.7);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+        z-index: 10;
+      }
+
+      .slider-btn:hover {
+        background: rgba(204, 0, 0, 1);
+      }
+
+      .prev {
+        left: 15px;
+      }
+
+      .next {
+        right: 15px;
+      }
+
+      /* Features */
+      .features {
+        padding: 100px 0;
+        background: #000;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+
+      .feature-item {
+        text-align: center;
+      }
+
+      .feature-icon {
+        font-size: 48px;
+        color: #cc0000;
+        margin-bottom: 20px;
+      }
+
+      .feature-item h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #cc0000;
+      }
+
+      /* Footer */
+      .footer {
+        background: #000;
+        padding: 50px 0;
+        text-align: center;
+        border-top: 2px solid #cc0000;
+      }
+
+      .footer p {
+        color: #888;
+        margin-bottom: 10px;
+      }
+
+      /* МЕДИА-ЗАПРОСЫ ДЛЯ 320px */
+      @media (max-width: 320px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .nav-links {
+          gap: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-content h1 {
+          font-size: 28px;
+        }
+
+        .hero-content p {
+          font-size: 16px;
+        }
+
+        .cta-button {
+          padding: 12px 25px;
+          font-size: 14px;
+        }
+
+        .section-title {
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+
+        .slider-container {
+          max-width: 100%;
+        }
+
+        .slide-image {
+          height: 200px;
+          font-size: 18px;
+        }
+
+        .slide-info {
+          padding: 15px;
+        }
+
+        .slide-info h3 {
+          font-size: 22px;
+        }
+
+        .specs {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .slider-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .hero {
+          height: 70vh;
+          margin-top: 120px;
+        }
+
+        .models,
+        .features {
+          padding: 50px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">PORSCHE</div>
+          <div class="nav-links">
+            <a href="#models">Модели</a>
+            <a href="#features">Технологии</a>
+            <a href="#contact">Контакты</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>PORSCHE</h1>
+          <p>There is no substitute</p>
+          <a href="#models" class="cta-button">Смотреть модели</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Models Section -->
+    <section class="models" id="models">
+      <div class="container">
+        <h2 class="section-title">Модельный ряд</h2>
+
+        <!-- Слайдер -->
+        <div class="slider-container">
+          <div class="slider">
+            <!-- Слайд 1 -->
+            <div class="slide">
+              <div class="slide-image">911 Turbo S</div>
+              <div class="slide-info">
+                <h3>911 Turbo S</h3>
+                <p>
+                  Легенда спортивных автомобилей с оппозитным двигателем и
+                  полным приводом
+                </p>
+                <div class="specs">
+                  <div class="spec-item">
+                    <div class="spec-value">650 л.с.</div>
+                    <div class="spec-label">Мощность</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">2.7с</div>
+                    <div class="spec-label">0-100 км/ч</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">330 км/ч</div>
+                    <div class="spec-label">Макс. скорость</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 2 -->
+            <div class="slide">
+              <div class="slide-image">Taycan Turbo</div>
+              <div class="slide-info">
+                <h3>Taycan Turbo</h3>
+                <p>
+                  Электрическая революция с технологией 800-вольтовой
+                  архитектуры
+                </p>
+                <div class="specs">
+                  <div class="spec-item">
+                    <div class="spec-value">680 л.с.</div>
+                    <div class="spec-label">Мощность</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">3.2с</div>
+                    <div class="spec-label">0-100 км/ч</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">440 км</div>
+                    <div class="spec-label">Запас хода</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 3 -->
+            <div class="slide">
+              <div class="slide-image">Cayenne Turbo</div>
+              <div class="slide-info">
+                <h3>Cayenne Turbo</h3>
+                <p>
+                  Спортивный внедорожник с адаптивной пневматической подвеской
+                </p>
+                <div class="specs">
+                  <div class="spec-item">
+                    <div class="spec-value">550 л.с.</div>
+                    <div class="spec-label">Мощность</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">4.1с</div>
+                    <div class="spec-label">0-100 км/ч</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">286 км/ч</div>
+                    <div class="spec-label">Макс. скорость</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Слайд 4 -->
+            <div class="slide">
+              <div class="slide-image">Panamera Turbo S</div>
+              <div class="slide-info">
+                <h3>Panamera Turbo S</h3>
+                <p>
+                  Четырехдверный спорткар с системой полного привода и активной
+                  подвеской
+                </p>
+                <div class="specs">
+                  <div class="spec-item">
+                    <div class="spec-value">630 л.с.</div>
+                    <div class="spec-label">Мощность</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">3.1с</div>
+                    <div class="spec-label">0-100 км/ч</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">315 км/ч</div>
+                    <div class="spec-label">Макс. скорость</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Кнопки навигации -->
+          <button class="slider-btn prev">‹</button>
+          <button class="slider-btn next">›</button>
+        </div>
+
+        <!-- Точки навигации -->
+        <div class="slider-nav">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Технологии Porsche</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h3>Мощность</h3>
+            <p>Передовые двигатели и электромоторы</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <h3>Точность</h3>
+            <p>Идеальное управление и контроль</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <h3>Динамика</h3>
+            <p>Мгновенный отклик и ускорение</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <h3>Роскошь</h3>
+            <p>Премиальные материалы и отделка</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <p>© 2025 Porsche Center. All rights reserved.</p>
+        <p>Официальный дилер Porsche в Беларуси</p>
+        <p>+375291234567 | Минск, ул. Колесникова, 3</p>
+      </div>
+    </footer>
+
+    <script>
+      // Слайдер
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".slider-dot");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        // Функция для перехода к определенному слайду
+        function goToSlide(index) {
+          if (index < 0) {
+            currentSlide = slideCount - 1;
+          } else if (index >= slideCount) {
+            currentSlide = 0;
+          } else {
+            currentSlide = index;
+          }
+
+          slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+          // Обновление активной точки
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentSlide);
+          });
+        }
+
+        // Обработчики для кнопок
+        prevBtn.addEventListener("click", () => {
+          goToSlide(currentSlide - 1);
+        });
+
+        nextBtn.addEventListener("click", () => {
+          goToSlide(currentSlide + 1);
+        });
+
+        // Обработчики для точек навигации
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            goToSlide(i);
+          });
+        });
+
+        // Автоматическое переключение слайдов каждые 5 секунд
+        setInterval(() => {
+          goToSlide(currentSlide + 1);
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>
